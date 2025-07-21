@@ -1,15 +1,20 @@
 // next.config.ts
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+// Hapus import 'NextConfig' dari 'next' dan juga tipe 'NextConfig' pada variabel 'config'
+// import type { NextConfig } from "next"; // Baris ini dihapus
+import withPWA from "next-pwa";
+
+// Hapus anotasi tipe NextConfig dari variabel config
+const config = {
+  /* config options here */
+  // Pastikan Anda memindahkan atau menambahkan konfigurasi Next.js lainnya di sini
 };
 
-// Hanya gunakan PWA jika bukan di lingkungan pengembangan
-// const withPWA = require('next-pwa')({
-//   dest: 'public',
-//   disable: process.env.NODE_ENV === 'development',
-// });
-// module.exports = withPWA(nextConfig);
+// Pastikan withPWA diketik dengan benar jika Anda ingin tetap menggunakan TypeScript
+const nextConfig = withPWA({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development', // Sangat disarankan untuk pengembangan
+})(config);
 
-// Untuk sementara, ekspor langsung nextConfig tanpa PWA
-module.exports = nextConfig;
+export default nextConfig;

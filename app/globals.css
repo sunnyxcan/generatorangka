@@ -5,12 +5,12 @@
   --foreground: #171717;
 }
 
-@theme inline {
+/* @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -23,4 +23,61 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CSS kustom Anda (jika ada) */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.animate-spin-slow {
+    animation: spin 1s linear infinite;
+}
+
+.top-right-copy-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 6px;
+    border-radius: 0.375rem;
+    background-color: transparent;
+    color: #6B7280;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    z-index: 10;
+}
+.top-right-copy-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #1a56db;
+}
+.top-right-copy-button.copied {
+    color: #22c55e;
+}
+.top-right-copy-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.copy-tooltip {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease-in-out;
+    z-index: 11;
+}
+.top-right-copy-button:hover .copy-tooltip {
+    opacity: 1;
 }

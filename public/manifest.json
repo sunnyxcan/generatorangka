@@ -1,4 +1,3 @@
-// public/manifest.json
 {
   "name": "Generator Angka Acak",
   "short_name": "Generator Angka",
@@ -6,7 +5,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "theme_color": "#3b82f6",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
@@ -18,5 +17,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+    // Tambahkan ukuran ikon lain jika diperlukan
   ]
 }
