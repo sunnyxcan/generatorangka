@@ -1,7 +1,7 @@
 // app/page.tsx
 'use client'; // This directive marks it as a Client Component
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { FaCopy, FaSpinner } from 'react-icons/fa'; // Install react-icons: npm install react-icons
 
 export default function Home() {
@@ -67,7 +67,7 @@ export default function Home() {
             setTimeout(() => setTopRightCopyStatus('idle'), 2000);
           }
         })
-        .catch(err => {
+        .catch(_err => {
           alert('Gagal menyalin angka. Silakan salin manual.');
         });
     } else {
