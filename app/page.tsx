@@ -3,6 +3,8 @@
 
 import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
+import { Analytics } from "@vercel/analytics/react" // Impor Analytics
+import { SpeedInsights } from "@vercel/speed-insights/next" // Impor SpeedInsights
 
 export default function Home() {
     const [numDigits, setNumDigits] = useState<string>("7");
@@ -253,6 +255,9 @@ export default function Home() {
                     </button>
                 </div>
             </div>
+            {/* Tambahkan komponen Analytics dan SpeedInsights di sini */}
+            <Analytics />
+            <SpeedInsights />
         </div>
     );
 }
