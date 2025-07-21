@@ -1,31 +1,61 @@
+/* globals.css */
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card-background: #ffffff;
+  --card-border: #e2e8f0; /* gray-200 */
+  --text-primary: #1f2937; /* gray-800 */
+  --text-secondary: #4b5563; /* gray-700 */
+  --blue-bg-light: #eff6ff; /* blue-50 */
+  --blue-border-light: #bfdbfe; /* blue-200 */
+  --blue-text-dark: #1e40af; /* blue-800 */
+  --blue-text-super-dark: #1e3a8a; /* blue-900 */
+  --input-border: #d1d5db; /* gray-300 */
+  --input-text: #1f2937; /* gray-800 */
+  --placeholder-text: #6b7280; /* gray-500 */
+  --gray-button-bg: #e5e7eb; /* gray-200 */
+  --gray-button-text: #1f2937; /* gray-800 */
+
+  --switch-bg-light: #1b3d88;
+  --switch-circle-light: #ffffe0;
+  --switch-moon-color: #f3f4f6;
+  --switch-sun-color: #fcd34d;
+  --switch-glow-color-light: transparent;
 }
 
-/* @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-} */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card-background: #1f2937; /* dark gray */
+  --card-border: #374151; /* dark gray */
+  --text-primary: #f3f4f6; /* gray-100 */
+  --text-secondary: #d1d5db; /* gray-300 */
+  --blue-bg-light: #1a202c; /* custom dark blue for blue-50 equivalent */
+  --blue-border-light: #2d3748; /* custom dark blue for blue-200 equivalent */
+  --blue-text-dark: #90cdf4; /* light blue */
+  --blue-text-super-dark: #63b3ed; /* slightly darker light blue */
+  --input-border: #4b5563; /* darker gray for input border */
+  --input-text: #f3f4f6; /* light text for input */
+  --placeholder-text: #9ca3af; /* lighter gray for placeholder */
+  --gray-button-bg: #374151; /* darker gray for button */
+  --gray-button-text: #f3f4f6; /* light text for button */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --switch-bg-dark: #1b3d88;
+  --switch-circle-dark: #2b3040;
+  --switch-moon-color: #fcd34d;
+  --switch-sun-color: #d1d5db;
+  --switch-glow-color-dark: rgba(252, 211, 77, 0.4);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* CSS kustom Anda (jika ada) */
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -45,14 +75,18 @@ body {
     padding: 6px;
     border-radius: 0.375rem;
     background-color: transparent;
-    color: #6B7280;
+    color: var(--text-secondary);
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
     z-index: 10;
 }
 .top-right-copy-button:hover {
     background-color: rgba(0, 0, 0, 0.05);
-    color: #1a56db;
+    color: var(--blue-text-dark);
+}
+.dark .top-right-copy-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--blue-text-dark);
 }
 .top-right-copy-button.copied {
     color: #22c55e;
@@ -80,4 +114,66 @@ body {
 }
 .top-right-copy-button:hover .copy-tooltip {
     opacity: 1;
+}
+
+.toggle-bg {
+    background-color: var(--switch-bg-light);
+    box-shadow: 0 0 0 0 var(--switch-glow-color-light);
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.dark .toggle-bg {
+    background-color: var(--switch-bg-dark);
+    box-shadow: 0 0 0 0 var(--switch-glow-color-dark);
+}
+
+.toggle-circle {
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transform: translateX(0);
+    background-color: var(--switch-circle-light);
+    box-shadow: 0 0 8px transparent;
+}
+
+.dark .toggle-circle {
+    transform: translateX(calc(100% + 4px));
+    background-color: var(--switch-circle-dark);
+    box-shadow: 0 0 8px var(--switch-glow-color-dark);
+}
+
+.toggle-circle svg {
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+}
+
+.toggle-circle .sun-icon {
+    opacity: 1;
+    color: var(--switch-sun-color);
+}
+.dark .toggle-circle .sun-icon {
+    opacity: 0;
+}
+
+.toggle-circle .moon-icon {
+    opacity: 0;
+    color: var(--switch-moon-color);
+}
+.dark .toggle-circle .moon-icon {
+    opacity: 1;
+}
+
+.fixed-dark-mode-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: var(--card-background);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .fixed-dark-mode-switch {
+    background-color: var(--card-background);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
