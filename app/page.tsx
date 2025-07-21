@@ -50,13 +50,12 @@ export default function Home() {
                     return;
                 }
 
-                // PERBAIKAN: Menggunakan 'const' untuk 'numbers'
                 const numbers: number[] = [];
                 if (duplicateOption === 'allow_duplicates') {
                     for (let i = 0; i < count; i++) {
                         numbers.push(Math.floor(Math.random() * (max - min + 1)) + min);
                     }
-                } else { // unique_numbers
+                } else {
                     if (count > (max - min + 1)) {
                         setGeneratedOutput(`Tidak bisa menghasilkan ${count} angka unik dalam rentang ${min}-${max}. Rentang terlalu kecil.`);
                         return;
@@ -77,9 +76,9 @@ export default function Home() {
                 }
                 setGeneratedOutput(outputString);
 
-            } catch (_error) { // PERBAIKAN: Menggunakan '_error' untuk peringatan unused-vars
+            } catch (_error) {
                 setGeneratedOutput("Terjadi kesalahan saat menghasilkan angka.");
-                console.error("Error saat menghasilkan angka:", _error); // Opsional: tetap mencetak _error untuk debugging
+                console.error("Error saat menghasilkan angka:", _error);
             } finally {
                 setIsLoading(false);
             }
@@ -115,7 +114,7 @@ export default function Home() {
                     }, 2000);
                 }
             }
-        } catch (_err) { // PERBAIKAN: Menggunakan '_err' untuk peringatan unused-vars
+        } catch (_err) {
             alert('Gagal menyalin angka. Silakan salin manual.');
         }
     };
@@ -211,7 +210,7 @@ export default function Home() {
                         type="submit"
                         id="generateButton"
                         disabled={isLoading}
-                        className={`w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 cursor-pointer ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                         <span id="buttonText">{isLoading ? 'Memproses...' : 'Generate Angka'}</span>
                         {isLoading && (
@@ -236,7 +235,7 @@ export default function Home() {
                     </p>
 
                     {showTopRightCopy && (
-                        <button id="topRightCopyButton" className="top-right-copy-button" onClick={() => copyTextToClipboard(generatedOutput, 'topRightCopyButton')}>
+                        <button id="topRightCopyButton" className="top-right-copy-button cursor-pointer" onClick={() => copyTextToClipboard(generatedOutput, 'topRightCopyButton')}>
                             <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" d="M7 4a2 2 0 012-2h6a2 2 0 012 2v1H7V4zm-2 2a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-1h2a2 2 0 002-2V8a2 2 0 00-2-2H9v1H5V6zm0 2h10v10H5V8zm2 0h6v6H7V8z" clipRule="evenodd" />
                             </svg>
@@ -248,7 +247,7 @@ export default function Home() {
                         id="copyButton"
                         onClick={() => copyTextToClipboard(generatedOutput, 'copyButton')}
                         disabled={isCopyButtonDisabled}
-                        className={`py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gray-200 text-gray-800 hover:bg-gray-300 ${isCopyButtonDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-gray-200 text-gray-800 hover:bg-gray-300 cursor-pointer ${isCopyButtonDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                         Salin Angka
                     </button>
